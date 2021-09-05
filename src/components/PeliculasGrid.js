@@ -13,7 +13,7 @@ const PeliculasGrid = () => {
         </ul>
       </div> */}
       <div className="col-md-3 mb-4">
-        <div class="card">
+        <div className="card">
           <div
             className="bg-image hover-overlay ripple"
             data-mdb-ripple-color="light"
