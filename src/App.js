@@ -31,12 +31,12 @@ function App() {
                 </form>
               </div>
             </nav>
-            <div className="container">
+            <div className="container mt-3">
               <Switch>
                 <Route exact path="/" component={Home}></Route>
                 <Route
                   exact
-                  path="/pelicula/detalle"
+                  path="/pelicula/:id"
                   component={DetallePelicula}
                 ></Route>
               </Switch>

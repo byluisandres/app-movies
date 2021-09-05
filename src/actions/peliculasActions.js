@@ -2,6 +2,9 @@ import {
   COMENZAR_DESCARGA_PELICULAS,
   DESCARGA_PELICULAS_EXITO,
   DESCARGA_PELICULAS_ERROR,
+  OBTENER_PELICULA_DETALLE,
+  PELICULA_DETALLE_EXITO,
+  PELICULA_DETALLE_ERROR,
 } from '../types'
 
 import clienteAxios from '../config/axios'
@@ -29,5 +32,31 @@ const obtenerPeliculasExito = (peliculas) => ({
 })
 const obtenerPeliculasError = (estado) => ({
   type: DESCARGA_PELICULAS_ERROR,
+  payload: estado,
+})
+
+//Obtener el detalle de un película
+export function obtenerPeliculaDetalleAction(id) {
+  return async (dispatch) => {
+    dispatch(obtenerPeliculaDetalle())
+    try {
+      const respuesta = await clienteAxios.get(`/movie/${id}`)
+      dispatch(obtenerPeliculaDetalleExito(respuesta.data))
+    } catch (error) {
+      dispatch(obtenerPeliculaDetalleError(true))
+    }
+  }
+}
+
+const obtenerPeliculaDetalle = () => ({
+  type: OBTENER_PELICULA_DETALLE,
+  payload: true,
+})
+const obtenerPeliculaDetalleExito = (pelicula) => ({
+  type: PELICULA_DETALLE_EXITO,
+  payload: pelicula,
+})
+const obtenerPeliculaDetalleError = (estado) => ({
+  type: PELICULA_DETALLE_ERROR,
   payload: estado,
 })
