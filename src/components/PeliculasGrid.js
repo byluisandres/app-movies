@@ -1,44 +1,51 @@
 import React from 'react'
-
-const PeliculasGrid = () => {
+import dayjs from 'dayjs'
+import ReactStars from 'react-rating-stars-component'
+const PeliculasGrid = ({ peliculas }) => {
   return (
     <>
-      {/* <div className="border">
-        <h1>Películas grid</h1>
-        <ul>
-          <li>Poster</li>
-          <li>Título</li>
-          <li>Fecha de estreno</li>
-          <li>calificacion</li>
-        </ul>
-      </div> */}
-      <div className="col-md-3 mb-4">
-        <div className="card">
-          <div
-            className="bg-image hover-overlay ripple"
-            data-mdb-ripple-color="light"
-          >
-            <img
-              src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
-              className="img-fluid"
-            />
-            <a href="#!">
-              <div
-                className="mask"
-                style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}
-              ></div>
-            </a>
-          </div>
-          <div className="card-body">
-            <h5 className="card-title">Título</h5>
-            <div className="d-flex justify-content-between">
-              <span>Fecha de estreno</span>
-              <span>Calificación</span>
+      {peliculas.map((pelicula) => (
+        <div className="col-md-3 mb-4 position-relative" key={pelicula.id}>
+          <div className="card">
+            <div
+              className="bg-image hover-overlay ripple"
+              data-mdb-ripple-color="light"
+            >
+              <a href="#!">
+                <img
+                  src={`http://image.tmdb.org/t/p/w500/${pelicula.poster_path}`}
+                  className="img-fluid"
+                  alt={pelicula.title}
+                />
+              </a>
+            </div>
+            <div className="card-body">
+              <h5 className="card-title">{pelicula.title}</h5>
+              <span
+                className="d-inline-block text-truncate"
+                style={{ maxWidth: '200px' }}
+              >
+                {pelicula.original_title}
+              </span>
+              <div className="">
+                <span className="">
+                  Fecha de estreno{' '}
+                  {dayjs(pelicula.release_date).format('DD/MM/YYYY')}
+                </span>
+                <span>
+                  <ReactStars
+                    count={10}
+                    size={24}
+                    activeColor="#ffd700"
+                    edit={false}
+                    value={pelicula.vote_average}
+                  />
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      
+      ))}
     </>
   )
 }

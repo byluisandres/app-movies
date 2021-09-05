@@ -11,8 +11,7 @@ export function obtenerPeliculasAction() {
     dispatch(obtenerPeliculas())
     try {
       const respuesta = await clienteAxios.get('/movie/now_playing')
-      console.log(respuesta)
-      //dispatch(obtenerPeliculasExito())
+      dispatch(obtenerPeliculasExito(respuesta.data.results))
     } catch (error) {
       dispatch(obtenerPeliculasError(true))
     }
@@ -24,4 +23,11 @@ const obtenerPeliculas = () => ({
   payload: true,
 })
 
-const 
+const obtenerPeliculasExito = (peliculas) => ({
+  type: DESCARGA_PELICULAS_EXITO,
+  payload: peliculas,
+})
+const obtenerPeliculasError = (estado) => ({
+  type: DESCARGA_PELICULAS_ERROR,
+  payload: estado,
+})

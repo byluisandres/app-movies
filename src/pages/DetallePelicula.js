@@ -9,7 +9,7 @@ const DetallePelicula = () => {
         <li>slidshow de actores</li>
         <li>boton regresar</li>
       </ul> */}
-      <div className="row">
+      <div className="row mt-4">
         <div className="col-md-6">
           <img
             src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
@@ -31,7 +31,7 @@ const DetallePelicula = () => {
           </div>
         </div>
       </div>
-      <CastSlideshow />
+      {/* <CastSlideshow /> */}
     </>
   )
 }
