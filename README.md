@@ -14,6 +14,7 @@ Ejecutar 'npm install' para instalar las dependencias
 - HTML5
 - React/Redux
 - Bootstrap
+- react-slick
 
 ## Backend 
 ```
