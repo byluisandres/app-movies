@@ -6,10 +6,10 @@ const clienteAxios = axios.create({
     api_key: '4e5d0990973bb9d400910a2cc2c20688',
     language: 'es-ES',
   },
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'text/plain',
-  },
+  // headers: {
+  //   'Access-Control-Allow-Origin': '*',
+  //   'Content-Type': 'text/plain',
+  // },
 })
 
 export default clienteAxios
