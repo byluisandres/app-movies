@@ -14,7 +14,10 @@ Ejecutar 'npm install' para instalar las dependencias
 - HTML5
 - React/Redux
 - Bootstrap
+<<<<<<< HEAD
 - react-slick
+=======
+>>>>>>> d6e9802505e548023759cfe525cd2645334322f9
 
 ## Backend 
 ```
@@ -22,7 +25,11 @@ Se ha usado la api de the movie db
 ```
 ### **Endpoints**
 ```
+<<<<<<< HEAD
 https://api.themoviedb.org/3/{params}?api_key={secret}language=es-ES
+=======
+https://api.themoviedb.org/3/?api_key={secret}language=es-ES
+>>>>>>> d6e9802505e548023759cfe525cd2645334322f9
 ```
 #### Obtener las todas la películas
 - **GET** /movie/now_playing
@@ -251,8 +258,14 @@ https://api.themoviedb.org/3/{params}?api_key={secret}language=es-ES
     ],
     "total_pages": 8,
     "total_results": 148
+<<<<<<< HEAD
 }
 ```
 ## Frontend
 ![imagen](https://user-images.githubusercontent.com/48489792/132247557-ac61baba-badf-4303-b9f0-3d0ecd21f175.png)
 ![imagen](https://user-images.githubusercontent.com/48489792/132247590-cd0428fc-fcb5-4d52-851c-069d77beb36b.png)
+=======
+
+}
+```
+>>>>>>> d6e9802505e548023759cfe525cd2645334322f9
