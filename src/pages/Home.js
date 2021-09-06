@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PeliculasGrid from '../components/PeliculasGrid'
-import Slideshow from '../components/Slideshow'
 import Spinner from '../components/Spinner'
 
 //redux
@@ -10,16 +9,20 @@ import { obtenerPeliculasAction } from '../actions/peliculasActions'
 
 const Home = () => {
   const dispatch = useDispatch()
+  const [perPage, setperPage] = useState(1)
 
   useEffect(() => {
-    const cargarPeliculas = () => dispatch(obtenerPeliculasAction())
-    cargarPeliculas()
-  }, [dispatch])
-
+    if (perPage === 0) {
+      setperPage(1)
+    } else {
+      const cargarPeliculas = () => dispatch(obtenerPeliculasAction(perPage))
+      cargarPeliculas()
+    }
+  }, [dispatch, perPage])
   //obtener el state
   const peliculas = useSelector((state) => state.peliculas.peliculas)
   const loading = useSelector((state) => state.peliculas.loading)
-  
+
   return (
     <>
       {loading ? (
@@ -27,12 +30,49 @@ const Home = () => {
       ) : (
         <>
           <div className="row">
-            <div className="col-12">
-              <Slideshow />
-            </div>
-          </div>
-          <div className="row">
             <PeliculasGrid peliculas={peliculas} />
+          </div>
+          <div className="mb-5 d-flex justify-content-end">
+            <button
+              className="btn btn-outline-secondary m-2"
+              disabled={perPage === 0 ? true : false}
+              onClick={() => setperPage(perPage - 1)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15px"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+            <button
+              className="btn btn-outline-secondary m-2"
+              onClick={() => setperPage(perPage + 1)}
+              disabled={perPage === 59 ? true : false}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15px"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
           </div>
         </>
       )}

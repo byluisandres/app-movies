@@ -1,22 +1,22 @@
+import React from 'react'
 //pages
 import Home from './pages/Home'
 import DetallePelicula from './pages/DetallePelicula'
 
 //Routing
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 //redux
 import { Provider } from 'react-redux'
 import store from './store'
-
-function App() {
+const App = () => {
   return (
     <>
-      <Router>
-        <Provider store={store}>
+      <Provider store={store}>
+        <Router>
           <div className="">
             <nav className="navbar navbar-dark bg-dark">
               <div className="container">
-                <span className="navbar-brand">Navbar</span>
+                <Link to="/" className="navbar-brand">App Movies</Link>
                 <form className="d-flex input-group w-auto">
                   <input
                     type="search"
@@ -42,8 +42,8 @@ function App() {
               </Switch>
             </div>
           </div>
-        </Provider>
-      </Router>
+        </Router>
+      </Provider>
     </>
   )
 }

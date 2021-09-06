@@ -3,6 +3,7 @@ import dayjs from 'dayjs'
 import { useHistory } from 'react-router-dom'
 import ReactStars from 'react-rating-stars-component'
 import { useDispatch } from 'react-redux'
+import noImage from '../assets/images/no-image.png'
 
 import { obtenerPeliculaDetalleAction } from '../actions/peliculasActions'
 
@@ -28,7 +29,11 @@ const PeliculasGrid = ({ peliculas }) => {
                 type="button"
               >
                 <img
-                  src={`http://image.tmdb.org/t/p/w500/${pelicula.poster_path}`}
+                  src={
+                    pelicula.poster_path
+                      ? `http://image.tmdb.org/t/p/w500/${pelicula.poster_path}`
+                      : noImage
+                  }
                   className="img-fluid"
                   alt={pelicula.title}
                 />
