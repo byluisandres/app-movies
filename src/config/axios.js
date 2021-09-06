@@ -6,6 +6,7 @@ const clienteAxios = axios.create({
     api_key: '4e5d0990973bb9d400910a2cc2c20688',
     language: 'es-ES',
   },
+  
 })
 
-export default clienteAxios
+export default clienteAxi
