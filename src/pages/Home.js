@@ -35,7 +35,7 @@ const Home = () => {
           <div className="mb-5 d-flex justify-content-end">
             <button
               className="btn btn-outline-secondary m-2"
-              disabled={perPage === 0 ? true : false}
+              disabled={perPage === 1 ? true : false}
               onClick={() => setperPage(perPage - 1)}
             >
               <svg

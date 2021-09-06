@@ -11,6 +11,9 @@ import {
   OBTENER_PELICULA_SIMILAR,
   PELICULA_SIMILAR_EXITO,
   PELICULA_SIMILAR_ERROR,
+  OBTENER_PELICULAS_BUSCAR,
+  PELICULAS_BUSCAR_EXITO,
+  PELICULAS_BUSCAR_ERROR,
 } from '../types'
 
 import clienteAxios from '../config/axios'
@@ -25,7 +28,6 @@ export function obtenerPeliculasAction(perPage) {
         },
       })
       dispatch(obtenerPeliculasExito(respuesta.data.results))
-
     } catch (error) {
       dispatch(obtenerPeliculasError(true))
     }
@@ -123,5 +125,37 @@ const obtenerPeliculasSimilaresExito = (peliculasSimilares) => ({
 })
 const obtenerPeliculasSimilaresError = (estado) => ({
   type: PELICULA_SIMILAR_ERROR,
+  payload: estado,
+})
+
+/**buscar peliculas */
+export function obtenerPeliculasBuscarAction(texto) {
+  return async (dispatch) => {
+    dispatch(obtenerPeliculasBuscar())
+    try {
+      const respuesta = await clienteAxios.get('search/movie', {
+        params: {
+          query: texto,
+          page: 1,
+          include_adult: false,
+        },
+      })
+      dispatch(obtenerPeliculasBuscarExito(respuesta.data.results))
+    } catch (error) {
+      dispatch(obtenerPeliculasBuscarError(true))
+    }
+  }
+}
+
+const obtenerPeliculasBuscar = () => ({
+  type: OBTENER_PELICULAS_BUSCAR,
+  payload: true,
+})
+const obtenerPeliculasBuscarExito = (peliculas) => ({
+  type: PELICULAS_BUSCAR_EXITO,
+  payload: peliculas,
+})
+const obtenerPeliculasBuscarError = (estado) => ({
+  type: PELICULAS_BUSCAR_ERROR,
   payload: estado,
 })

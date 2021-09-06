@@ -2,9 +2,11 @@ import React from 'react'
 //pages
 import Home from './pages/Home'
 import DetallePelicula from './pages/DetallePelicula'
+import Navbar from './components/Navbar'
+import BuscarPage from './pages/BuscarPage'
 
 //Routing
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 //redux
 import { Provider } from 'react-redux'
 import store from './store'
@@ -14,23 +16,7 @@ const App = () => {
       <Provider store={store}>
         <Router>
           <div className="">
-            <nav className="navbar navbar-dark bg-dark">
-              <div className="container">
-                <Link to="/" className="navbar-brand">App Movies</Link>
-                <form className="d-flex input-group w-auto">
-                  <input
-                    type="search"
-                    className="form-control rounded"
-                    placeholder="Search"
-                    aria-label="Search"
-                    aria-describedby="search-addon"
-                  />
-                  <span className="input-group-text border-0" id="search-addon">
-                    <i className="fas fa-search"></i>
-                  </span>
-                </form>
-              </div>
-            </nav>
+            <Navbar />
             <div className="container mt-3">
               <Switch>
                 <Route exact path="/" component={Home}></Route>
@@ -38,6 +24,11 @@ const App = () => {
                   exact
                   path="/pelicula/:id"
                   component={DetallePelicula}
+                ></Route>
+                <Route
+                  exact
+                  path="/buscar/:text"
+                  component={BuscarPage}
                 ></Route>
               </Switch>
             </div>
