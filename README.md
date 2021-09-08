@@ -9,6 +9,7 @@ Ejecutar 'npm install' para instalar las dependencias
 ```
 
 ## Demo
+https://app-peliculas.netlify.app/
 
 ## Construido con 🛠️
 - HTML5
@@ -261,4 +262,4 @@ https://api.themoviedb.org/3/?api_key={secret}language=es-ES
 
 }
 ```
->>>>>>> d6e9802505e548023759cfe525cd2645334322f9
+
